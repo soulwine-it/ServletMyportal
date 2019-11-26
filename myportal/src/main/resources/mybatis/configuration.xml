@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- MyBatis 설정 파일 -->
+<!-- sqlsessiontemplate에 전달될 설정 파일 -->
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+	<configuration>
+		<!-- MyBatis에서 사용할 매개변수들의 별칭 -->
+		<typeAliases>
+			<!-- guestbookVo의 별칭 -->
+			<typeAlias alias="GuestbookVo" type="com.bitacademy.myportal.repository.GuestbookVo"/>
+			<!--MemberVo의 별칭 -->
+			<typeAlias alias="MemberVo" type="com.bitacademy.myportal.repository.MemberVo"/>
+			<!-- BoardVo의 등록 -->
+			<typeAlias alias="BoardVo" type="com.bitacademy.myportal.repository.BoardVo"/>
+		</typeAliases>
+		
+		<!-- sql을 다고 테이블과 객체들을 연결시킬 매핑 정보를 다고 있는 mapper들의 목록 -->
+		<mappers>
+			<!-- Guestbook 서비스를 위한 mapper -->
+			<mapper resource="/mybatis/mappers/guestbook.xml"/>
+			<mapper resource="/mybatis/mappers/member.xml"/>
+			<mapper resource="/mybatis/mappers/board.xml"/>
+		</mappers>
+		
+	</configuration>

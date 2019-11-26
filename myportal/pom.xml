@@ -1,0 +1,147 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.bitacademy</groupId>
+  <artifactId>myportal</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <properties>
+  <org.springframework-version>
+			4.2.3.RELEASE
+	</org.springframework-version>
+	<!-- jcl과 slf4를 연결하기 위한 브릿지 -->
+	<jcloverslf4j-version>1.7.7</jcloverslf4j-version>
+	<!--slf4j 실제 구현체 logback의 버전  -->
+	<logback-version>1.1.2</logback-version>
+  </properties>
+  <build>
+    <sourceDirectory>src/main/ja</sourceDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.2.1</version>
+        <configuration>
+          <warSourceDirectory>webapp</warSourceDirectory>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <!-- 외부 maven 저장소 등록 -->
+  <repositories>
+  	<repository>
+  		<id>oracle</id>
+  		<name>Oracle JDBC Repository</name>
+  		<url>https://repo.spring.io/plugins-release/</url>
+  	</repository>
+  </repositories>
+  
+  <dependencies>
+  <dependency>
+  <groupId>org.springframework</groupId>
+  <artifactId>spring-context</artifactId>
+  <version>${org.springframework-version}</version>
+  <!-- 기본 로거 jcl을 빌드과정에서 제외:slf4j로 교체 -->
+  <exclusions>
+  	<exclusion>
+  		<groupId>commons-logging</groupId>
+  		<artifactId>commons-logging</artifactId>
+  	</exclusion>
+  </exclusions>
+  </dependency>
+  
+  <dependency>
+  <groupId>org.springframework</groupId>
+  <artifactId>spring-web</artifactId>
+  <version>${org.springframework-version}</version>
+  </dependency>
+  
+  <dependency>
+  <groupId>org.springframework</groupId>
+  <artifactId>spring-webmvc</artifactId>
+  <version>${org.springframework-version}</version>
+  </dependency>
+  
+  <dependency>
+	<groupId>javax.servlet</groupId>  
+	<artifactId>jstl</artifactId>
+	<version>1.2</version>
+  </dependency>
+  
+  <!-- spring jdbc -->
+  <dependency>
+  	<groupId>org.springframework</groupId>
+  	<artifactId>spring-jdbc</artifactId>
+  	<version>${org.springframework-version}</version>
+  </dependency>
+  
+  <!-- oracle JDBC Driver -->
+  <dependency>
+  	<groupId>com.oracle</groupId>
+  	<artifactId>ojdbc6</artifactId>
+  	<version>11.2.0.3</version>
+  	<!--<scope>test</scope>  -->
+  </dependency>
+  
+  <!-- MyBatis -->
+  <dependency>
+  	<groupId>org.mybatis</groupId>
+  	<artifactId>mybatis</artifactId>
+  	<version>3.2.2</version>
+  </dependency>
+  
+  <!-- MyBatis Spring -->
+  <dependency>
+  	<groupId>org.mybatis</groupId>
+  	<artifactId>mybatis-spring</artifactId>
+  	<version>1.2.3</version>
+  </dependency>
+  
+  <!-- Jackson -->
+  <dependency>
+  	<groupId>com.fasterxml.jackson.core</groupId>
+  	<artifactId>jackson-databind</artifactId>
+  	<version>2.1.1</version>
+  </dependency>
+  
+  <!-- jcloverslf4j:브릿지 -->
+  <dependency>
+  	<groupId>org.slf4j</groupId>
+  	<artifactId>jcl-over-slf4j</artifactId>
+  	<version>${jcloverslf4j-version}</version>
+   </dependency>
+   
+   <!-- logack라이브러리: slf4j의 구현체 -->
+   <dependency>
+  	<groupId>ch.qos.logback</groupId>
+  	<artifactId>logback-classic</artifactId>
+  	<version>${logback-version}</version>
+   </dependency>
+   
+   <!-- Hibernate Vlidator -->
+   <dependency>
+   	<groupId>org.hibernate</groupId>
+  	<artifactId>hibernate-validator</artifactId>
+  	<version>6.0.0.Final</version>
+   </dependency>
+   
+   <!-- Commons Fileupload: MultipartFile 처리용 -->
+   <dependency>
+   	<groupId>commons-fileupload</groupId>
+  	<artifactId>commons-fileupload</artifactId>
+  	<version>1.2.1</version>
+   </dependency>
+   
+   <dependency>
+   	<groupId>commons-io</groupId>
+  	<artifactId>commons-io</artifactId>
+  	<version>1.4</version>
+   </dependency>
+  </dependencies>
+</project>
